@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    use HasFactory;
+    use HasFactory, UuidTrait;
     /**
      * The attributes that are mass assignable.
      *
@@ -23,11 +24,11 @@ class Task extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function project()
     {
-        return $this->hasOne(Project::class);
+        return $this->belongsTo(Project::class, 'project_id', 'id');
     }
 }
