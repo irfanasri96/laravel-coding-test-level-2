@@ -24,13 +24,22 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $method = $this->method();
-
-        if($method == 'POST' || $method == 'PUT') {
-            $rules['username'] = 'required|string|unique:users';
+        $route = $this->route()->getName();
+        
+        if($route == 'login') {
+            $rules['username'] = 'required|string';
             $rules['password'] = 'required|string';
-        } else if ($method == 'PATCH') {
-            $rules['username'] = 'sometimes|required|string|unique:users';
-            $rules['password'] = 'sometimes|required|string';
+            $rules['role'] = 'required|string';
+        } else {
+            if($method == 'POST' || $method == 'PUT') {
+                $rules['username'] = 'required|string|unique:users';
+                $rules['password'] = 'required|string';
+                $rules['role'] = 'required|string';
+            } else if ($method == 'PATCH') {
+                $rules['username'] = 'sometimes|required|string|unique:users';
+                $rules['password'] = 'sometimes|required|string';
+                $rules['role'] = 'sometimes|required|string';
+            }
         }
 
         return $rules;
