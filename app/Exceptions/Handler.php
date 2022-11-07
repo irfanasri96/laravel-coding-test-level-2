@@ -45,52 +45,52 @@ class Handler extends ExceptionHandler
         });
     }
 
-    // public function render($request, Throwable $exception)
-    // {
-    //     if ($exception instanceof MissingScopeException) {
-    //         $http_response = 403;
-    //         $message = [
-    //             'errors' => ['User do not have access'],
-    //         ];
-    //         return response()->json($message, $http_response);
-    //     } elseif ($exception instanceof ValidationException) {
-    //         $http_response = 422;
-    //         $message = [
-    //             'errors' => $exception->errors(),
-    //         ];
-    //         return response()->json($message, $http_response);
-    //     } elseif ($exception instanceof RouteNotFoundException) {
-    //         $http_response = 404;
-    //         $message = [
-    //             'errors' => ['Route not found'],
-    //         ];
-    //         return response()->json($message, $http_response);
-    //     } elseif ($exception instanceof AuthenticationException) {
-    //         $http_response = 401;
-    //         $message = [
-    //             'errors' => ['Unauthenticated.'],
-    //         ];
-    //         return response()->json($message, $http_response);
-    //     } elseif ($exception instanceof ModelNotFoundException) {
-    //         $http_response = 404;
-    //         $message = [
-    //             'errors' => ['Model not found'],
-    //         ];
-    //         return response()->json($message, $http_response);
-    //     } elseif ($exception instanceof QueryException) {
-    //         $http_response = 400;
-    //         $message = [
-    //             'errors' => ['Bad request'],
-    //         ];
-    //         return response()->json($message, $http_response);
-    //     } elseif ($exception instanceof Throwable) {
-    //         $http_response = 500;
-    //         $message = [
-    //             'errors' => ['Internal server error'],
-    //         ];
-    //         return response()->json($message, $http_response);
-    //     }
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof MissingScopeException) {
+            $http_response = 403;
+            $message = [
+                'errors' => ['User do not have access'],
+            ];
+            return response()->json($message, $http_response);
+        } elseif ($exception instanceof ValidationException) {
+            $http_response = 422;
+            $message = [
+                'errors' => $exception->errors(),
+            ];
+            return response()->json($message, $http_response);
+        } elseif ($exception instanceof RouteNotFoundException) {
+            $http_response = 404;
+            $message = [
+                'errors' => ['Route not found'],
+            ];
+            return response()->json($message, $http_response);
+        } elseif ($exception instanceof AuthenticationException) {
+            $http_response = 401;
+            $message = [
+                'errors' => ['Unauthenticated.'],
+            ];
+            return response()->json($message, $http_response);
+        } elseif ($exception instanceof ModelNotFoundException) {
+            $http_response = 404;
+            $message = [
+                'errors' => ['Model not found'],
+            ];
+            return response()->json($message, $http_response);
+        } elseif ($exception instanceof QueryException) {
+            $http_response = 400;
+            $message = [
+                'errors' => ['Bad request'],
+            ];
+            return response()->json($message, $http_response);
+        } elseif ($exception instanceof Throwable) {
+            $http_response = 500;
+            $message = [
+                'errors' => ['Internal server error'],
+            ];
+            return response()->json($message, $http_response);
+        }
 
-    //     return parent::render($request, $exception);
-    // }
+        return parent::render($request, $exception);
+    }
 }
