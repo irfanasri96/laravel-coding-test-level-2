@@ -7,6 +7,7 @@ use App\Http\Resources\TaskCollection;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends BaseController
 {
@@ -55,6 +56,10 @@ class TaskController extends BaseController
      */
     public function update(TaskRequest $request, Task $task)
     {
+        $user = Auth::user();
+        if($user->id != $task->user_id) {
+            return $this->sendError('User not match.',  ['User cannot edit this task'], 404);
+        }
         $task->update($request->all());
 
         return $this->sendResponse(new TaskResource($task), 'Task updated successfully.');

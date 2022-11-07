@@ -1,0 +1,671 @@
+{
+	"info": {
+		"_postman_id": "db75c1ee-9682-4fcb-bb98-fa9573805fb0",
+		"name": "Laravel Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22886511"
+	},
+	"item": [
+		{
+			"name": "User Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "ali",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "product_owner",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url}}/register"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "ali",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "product_owner",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url}}/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{url}}/users"
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{url}}/users/cf4f26cc-eb51-4048-92b1-a25c745a4419"
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "product_owner",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url}}/users"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"ali\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/users/4e408b69-eda2-409f-8655-0b337c423c51"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"daemon\",\n    \"password\" : \"gotforever\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/users/cf4f26cc-eb51-4048-92b1-a25c745a4419"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{adminToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{url}}/users/cf4f26cc-eb51-4048-92b1-a25c745a4419"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{ownerToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/projects?q=test",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"projects"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "test"
+								},
+								{
+									"key": "pageSize",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "pageIndex",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sortDirection",
+									"value": "desc",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{ownerToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{url}}/projects/4a0b390d-ff1c-43eb-8c69-8038c527e0a0"
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{ownerToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "test5",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url}}/projects"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{ownerToken}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"selangkah\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/projects/4a0b390d-ff1c-43eb-8c69-8038c527e0a0"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{ownerToken}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\" : \"sooka\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/projects/4a0b390d-ff1c-43eb-8c69-8038c527e0a0"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{ownerToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{url}}/projects/4a0b390d-ff1c-43eb-8c69-8038c527e0a0"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{ownerToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{url}}/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{memberToken}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": "{{url}}/tasks/8528b070-5a17-4a31-8f9a-ccfc631f7781"
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{ownerToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "descriptions",
+									"value": "test",
+									"type": "text"
+								},
+								{
+									"key": "project_id",
+									"value": "3e981d71-6ef8-455d-984e-2361065e9851",
+									"type": "text"
+								},
+								{
+									"key": "users[0]",
+									"value": "32230098-c701-4640-9ea4-5de23691b5a3",
+									"type": "text"
+								},
+								{
+									"key": "users[1]",
+									"value": "2e8af42a-87f6-4c9f-8ab9-7a27a62642ff",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{url}}/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{memberToken}}"
+							}
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\" : \"COMPLETED\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/tasks/8cc9f398-dbcc-4d7e-871f-47358248ca23"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{memberToken}}"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\" : \"IN_PROGRESS\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/tasks/8528b070-5a17-4a31-8f9a-ccfc631f7781"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{ownerToken}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{url}}/tasks/afdce0c3-7719-4bcc-994d-93ebeda5e56c"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "adminToken",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTAzMjA0M2RmZjM5MjM5MDBiMzI1OGUzYzgzZGVmMDExM2ZkYTI1NmI5NDNkM2MyNGZjYzQ0Nzg5ODY3OWY1YjBiYzQ2YWE1YWM1MTRhM2EiLCJpYXQiOjE2Njc4NDMwNDYuNzc5NDAzLCJuYmYiOjE2Njc4NDMwNDYuNzc5NDA2LCJleHAiOjE2OTkzNzkwNDYuNzc1MDIsInN1YiI6IjI0N2JhMzNmLWMwYjUtNDcwNi05ODFmLTA3Y2E3ZWQ2OGMwMyIsInNjb3BlcyI6WyJhZG1pbiJdfQ.dwwHh7c-oYNF9GRoxs-XCk1mmMGHK9nKWbKaCnj_m7BjpnbTyDhq6FVFZtYp2nBI4Ac8kREcJxj7XbvP92wwpa-MU35kyKVPoa_cQqkpguISywgNYZak_sjRreSMOXefevttKiGkWiKdJmIntAArMxz78UzTghh3JCDrWzBTMDxu4ix0BUSnI5xcRvdr3twjU3TbkXdjtuN5BcmndILSm81spvq9vLWE9SkI-QF5i71YQzkb-gxOOdPe9QduiHLBoIOLIdvseOkPslXBI2VtoFMmaB2Y_hp2Of6T0E94NteRKuQCnAdhI-YT8czUYIzHVipKmuL_v4e9eh0F_ysoDIAvrlm1W3r6WDAFxyU-59-f49zCCUekWIg5AinCKutwE-45HiWGe1ECTdP8zeMDhTThyKeppW4C7GF_91M-NAgxl6dAu7m8CMNu0tLlFup86SCYYlm1-uFsZ-CSyPLRN5wA8lNFBeQTGrtBFsOVIM7En4bXGbPtkypKG-nRQpuX5zUVH0wp8RFUxlRgeinCWT9sEDzPrQ6QzWzao0j-0Ej3ilKKIyi66N1WUZSYytPmMy4On02ZIhj6zkwi2FvncsJGkjY7UtVPGz18n3_HhkQVH2KUnfvg4q7lzkd-pJRDi_j_HkeAknbfoASiAJ1lDu7jtIF332fW0Cv1nyCzMqk",
+			"type": "string"
+		},
+		{
+			"key": "memberToken",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNjQwOTVkYjU0MWJkZjk3MWFiMTg2YTM3OWU4ZjM0YjY4OTY2ZGVjZmMzOTIzMzM4Yzg1NmE4ODUyZWI4MDZiODRlNzA1ZTgwMjZlYTc1NGEiLCJpYXQiOjE2Njc4NDU5MTYuNDc0NTU5LCJuYmYiOjE2Njc4NDU5MTYuNDc0NTYyLCJleHAiOjE2OTkzODE5MTYuNDcyMDY1LCJzdWIiOiI0ZTZiZGFlOC0zMTRiLTRmZDMtOTA1Yi04NjI4YjZmNTIwODkiLCJzY29wZXMiOlsidGVhbV9tZW1iZXIiXX0.hVfnt_S0-N6Suvn9U81zIphDQfv4iD8UdnYhjMuBEv2v7y3oVZGncjQtosqtjxa0juUb0dP2bf4e_VeIjh9rLvRaAYryNB0vupRtJdllvNv8WA0yoc76SGoJTFA8R3hfWSA87S7U6e-lrYsH_nI1VE8Shaz7Yb9iM_OSG7DmmRgVslLy-MGD7S65HBIBa_-4cbMLVvYoSjss7Tg6RFB1FzEXMO2o_jaJmfGW7_dWRRztAA4OWM0cobH_GWyfwDWnGpqt0j1NTEpR1Tdyc4dd368VhUZPR4tkALdMkeJ3NYXSwu2dLzo43sfFdvTouFPu9hJaf-VLUjHlrpF_V2TF4S4QpJcLrJ-cQqlaK4Wt4GOAvF0ALOdRMLZwahhZfZHxAu-uUW8aKmboUq1SqAhe0oBmSbZFUvWaVu5yINCttZ2vNjXJ93DwkyHtM3CwN-x5Z0QRfv1NjZjnOJB6eHEGr01qBvDFPav66_-goSLgDakSvTGbv4QfSIyFvPRZHndzjVCWUsWUbPYWq7FQR6C5LjcibJWroAZ7BSjklOW1mrL57A4zve9Mn8FI0fdnEZvJ4Uggp7rcuksAC-sFxR0STosayZFmZJNGbjW8Utv-v8ngKG-OGUmyBs8Sqr87kP5ZJQruA1EjpC_d6JHPTjCnd7wxCIk37VXPhd5mk0rAuyA",
+			"type": "string"
+		},
+		{
+			"key": "ownerToken",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNmI0YjliYzNkNjMwNDJkN2MyOGI0MWZmOGYwNGUwNzkxNjEzNDZjYTRhODg2YWZhMTY1YmM5YWJkYjY1MGFiZjAzNDQwMzdkOTY0OGEyOWQiLCJpYXQiOjE2Njc4NDYxMzcuNTU4NDc2LCJuYmYiOjE2Njc4NDYxMzcuNTU4NDc5LCJleHAiOjE2OTkzODIxMzcuNTU1MjI3LCJzdWIiOiI1YTk4NThhYS03ZmM3LTRjNjktYjc1Mi0zZGJhNjA0NmUyM2QiLCJzY29wZXMiOlsicHJvZHVjdF9vd25lciJdfQ.0lGt0vAZr6xCHjUb4ofk5lCOFi7ow8Eef6Lz3fPIXCi_LP8i2cJjbs6YOKmmDLiNc6FtAQfzxTqH2wB643J4zSe23Dz6fApXFGBvzwAkv_L4PVSu_VUuViADxzqXuzaQVqIbO1hYW2ctjnvsczaZyxCCXWIBYsAI_O2Qt6ZE9gLzS6Y7Vr2E2XbjTL98nU5AdQ5i1uuabYBn3oYyHUvfqILUW3V017xZmFWNRdoGUB3_kLmRxa7Re8dVu_PGeyKsMIwbYa1uH1VLjOez8hB_0F3VAufTwxDL8scJEHLSAA_V4p4sQ-WIvNYG9QrajF4BEx0m1C5m-vvOJTDErujH6LrDgSe1R4L2ulb3GNcpOZM7L65jBDCZ9MKy2B-7vt6bRlV0PHuKtYC6K7J4uVzSkGuXEFEJlXbHsr2otFzPqAZIlNXBI6wgfR5XiEN7DqAh6iE1lYvu5SJQlmat_tYIoP8jTaOT0yIDxRNbc93h3GzQzBJG4_-ujQ7lvi3QGL4iqXvwUQNB3AGUD8lARIaFSvBFDNU_7Qw69j_LME9mxy-8S4dgzkB8XCqSjLxJAjlGhpo3wzFg3qPXTm_KjWN--gwdZNZVMNVwekwrnu-vO0DdcDLYZ5SscMa0wGm22i8hVAgLZyZpVw_g6FMIeygd_YdCxVIM-oaydXgMfHKuaJE",
+			"type": "string"
+		}
+	]
+}

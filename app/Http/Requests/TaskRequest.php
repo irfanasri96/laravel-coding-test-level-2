@@ -30,13 +30,13 @@ class TaskRequest extends FormRequest
             $rules['descriptions'] = 'required|string';
             $rules['project_id'] = 'required|string|exists:projects,id';
             $rules['user_id'] = 'required|string|exists:users,id';
-            $rules['status'] = 'required|string';
+            $rules['status'] = 'string|in:NOT_STARTED,IN_PROGRESS,READY_FOR_TEST,COMPLETED';
         } else if ($method == 'PATCH') {
             $rules['title'] = 'sometimes|string';
             $rules['descriptions'] = 'sometimes|string';
             $rules['project_id'] = 'sometimes|string|exists:projects,id';
             $rules['user_id'] = 'sometimes|string|exists:users,id';
-            $rules['status'] = 'sometimes|required|string';
+            $rules['status'] = 'sometimes|required|string|in:NOT_STARTED,IN_PROGRESS,READY_FOR_TEST,COMPLETED';
         }
 
         return $rules;

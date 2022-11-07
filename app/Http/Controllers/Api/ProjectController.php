@@ -6,6 +6,7 @@ use App\Http\Requests\ProjectRequest;
 use App\Http\Resources\ProjectCollection;
 use App\Http\Resources\ProjectResource;
 use App\Models\Project;
+use Illuminate\Http\Request;
 
 class ProjectController extends BaseController
 {
@@ -14,9 +15,37 @@ class ProjectController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $projects = Project::all();
+        $pageIndex = 0;
+        $pageSize = 3;
+        $sortBy = 'name';
+        $sortDirection = 'asc';
+
+        $query = Project::query();
+
+        if($request->has('q')) {
+            $query->where('name', 'LIKE', '%' . $request['q'] . '%');
+        }
+
+        if($request->has('pageIndex')) {
+            $pageIndex = $request['pageIndex'];
+        }
+
+        if($request->has('pageSize')) {
+            $pageSize = $request['pageSize'];
+        }
+
+        if($request->has('sortBy')) {
+            $sortBy = $request['sortBy'];
+        }
+
+        if($request->has('sortDirection')) {
+            $sortDirection = $request['sortDirection'];
+        }
+
+        $projects = $query->orderBy($sortBy, $sortDirection)
+                          ->paginate($pageSize, ['*'], 'page', $pageIndex);
 
         return $this->sendResponse(new ProjectCollection($projects), 'Projects retrieved successfully.');
     }
