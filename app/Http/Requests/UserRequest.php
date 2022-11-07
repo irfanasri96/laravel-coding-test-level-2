@@ -25,20 +25,20 @@ class UserRequest extends FormRequest
     {
         $method = $this->method();
         $route = $this->route()->getName();
-        
+
         if($route == 'login') {
             $rules['username'] = 'required|string';
             $rules['password'] = 'required|string';
-            $rules['role'] = 'required|string';
+            $rules['role'] = 'required|string|in:admin,product_owner,team_member';
         } else {
             if($method == 'POST' || $method == 'PUT') {
                 $rules['username'] = 'required|string|unique:users';
                 $rules['password'] = 'required|string';
-                $rules['role'] = 'required|string';
+                $rules['role'] = 'required|string|in:admin,product_owner,team_member';
             } else if ($method == 'PATCH') {
                 $rules['username'] = 'sometimes|required|string|unique:users';
                 $rules['password'] = 'sometimes|required|string';
-                $rules['role'] = 'sometimes|required|string';
+                $rules['role'] = 'sometimes|required|string|in:admin,product_owner,team_member';
             }
         }
 
